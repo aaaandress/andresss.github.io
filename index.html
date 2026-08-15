@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andrés Becerra — Diseño</title>
+<style>
+  :root{
+    --blueprint:#0a1c33;
+    --paper:#ffffff;
+    --ink-text:#101f33;
+    --muted-dark:#3a5770;
+    --hair-light:rgba(16,31,51,0.14);
+    --light-text:#eef1f4;
+    --muted-light:#9bc0dc;
+    --hair-dark:rgba(238,241,244,0.22);
+    --accent:#e8590c;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html,body{
+    margin:0;
+    height:100%;
+    background:var(--blueprint);
+    color:var(--ink-text);
+    font-family:'Lucida Console', Monaco, monospace;
+  }
+
+  .mono{ font-family:'Lucida Console', Monaco, monospace; }
+  a{ color:inherit; }
+
+  .frame{
+    position:relative;
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+  }
+
+  /* ---------- HERO (5/6 de la página) ---------- */
+
+  .hero{
+    position:absolute;
+    top:0; left:0;
+    width:100%;
+    height:83.333%;
+    z-index:3;
+    background-color:var(--blueprint);
+    color:#eef1f4;
+    display:flex;
+    align-items:center;
+    padding:0 44px;
+    transition:height .9s cubic-bezier(.65,0,.35,1);
+  }
+
+  .frame.is-open .hero{ height:16.667%; }
+
+  .hero-eyebrow{
+    display:block;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted-light);
+    margin-bottom:16px;
+  }
+
+  .hero-name{
+    font-family:'Lucida Console', Monaco, monospace;
+    font-weight:700;
+    font-size:clamp(2rem, 5.4vw, 3.4rem);
+    line-height:.98;
+    letter-spacing:-.01em;
+    margin:0 0 12px;
+  }
+
+  .hero-role{
+    font-size:14px;
+    color:#dbe4ee;
+    max-width:34ch;
+    line-height:1.45;
+    margin:0;
+    transition:opacity .3s;
+  }
+
+  .frame.is-open .hero-role{ opacity:0; height:0; overflow:hidden; margin:0; }
+  .frame.is-open .hero-eyebrow{ margin-bottom:0; }
+
+  /* ---------- Corchete "L" invertida hacia la izquierda ---------- */
+
+  .bracket{
+    position:absolute;
+    inset:0;
+    background:transparent;
+    border:0;
+    padding:0;
+    cursor:pointer;
+    z-index:4;
+  }
+  .bracket:focus-visible{ outline:2px solid var(--accent); outline-offset:-4px; }
+
+  .bracket-v{
+    position:absolute;
+    top:15px;
+    bottom:15px;
+    right:15px;
+    width:4px;
+    background:#eef1f4;
+    opacity:.85;
+    transition:background .2s;
+  }
+  .bracket-h{
+    position:absolute;
+    left:15px;
+    right:15px;
+    bottom:15px;
+    height:4px;
+    background:#eef1f4;
+    opacity:.85;
+    transition:background .2s;
+  }
+
+  .bracket:hover .bracket-v,
+  .bracket:hover .bracket-h,
+  .bracket:focus-visible .bracket-v,
+  .bracket:focus-visible .bracket-h{ background:var(--accent); }
+
+  /* ---------- CONTENT (1/6 -> 5/6, franja blanca) ---------- */
+
+  .content{
+    position:absolute;
+    left:0; bottom:0;
+    width:100%;
+    height:16.667%;
+    background:var(--paper);
+    color:var(--ink-text);
+    overflow:hidden;
+    z-index:2;
+    transition:height .9s cubic-bezier(.65,0,.35,1);
+  }
+
+  .frame.is-open .content{
+    height:83.333%;
+    overflow-y:auto;
+  }
+
+  .content-main{
+    max-width:780px;
+    margin:0 auto;
+    padding:0 32px;
+    opacity:0;
+    transition:opacity .4s ease;
+  }
+  .contact-strip{ opacity:0; transition:opacity .4s ease; }
+
+  .frame.is-open .content-main,
+  .frame.is-open .contact-strip{
+    opacity:1;
+    transition-delay:.5s;
+  }
+
+  .block{
+    padding:64px 0;
+    text-align:center;
+  }
+  .block#talleres{ padding-top:96px; }
+  .block#talleres{ text-align:left; }
+
+  h2{
+    font-family:'Lucida Console', Monaco, monospace;
+    font-weight:700;
+    font-size:clamp(1.4rem, 2.6vw, 1.9rem);
+    margin:0 0 40px;
+    letter-spacing:-.01em;
+    text-align:center;
+  }
+
+  p{ line-height:1.7; font-size:16px; margin:0 auto 14px; max-width:62ch; }
+
+
+
+  .workshops{}
+  .workshop{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:4px 16px;
+    padding:22px 0;
+    align-items:center;
+  }
+  .workshop a{
+    font-family:'Lucida Console', Monaco, monospace;
+    font-size:17px;
+    font-weight:700;
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+  }
+  .workshop a:hover{ border-bottom-color:var(--accent); color:var(--accent); }
+  .workshop .year{
+    font-family:'Lucida Console', Monaco, monospace;
+    font-size:24px;
+    font-weight:600;
+    color:var(--ink-text);
+  }
+
+
+  .contact-strip{
+    background:var(--blueprint);
+    color:var(--light-text);
+    padding:28px 32px;
+    margin-top:40px;
+  }
+  .contact-strip .content-main{ padding:0; opacity:1; transition:none; }
+  .contact-row-flex{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .contact-row-flex a{
+    font-size:15px;
+    text-decoration:none;
+    border-bottom:1px solid var(--hair-dark);
+    padding-bottom:2px;
+  }
+  .contact-row-flex a:hover{ border-bottom-color:var(--accent); color:var(--accent); }
+
+  @media (prefers-reduced-motion: reduce){
+    .hero, .content, .hero-role, .content-main, .contact-strip{ transition:none; }
+  }
+
+  @media (max-width:720px){
+    .hero{ padding:0 22px; }
+    .content-main{ padding:0 20px; }
+    .contact-row-flex{ flex-direction:column; align-items:flex-start; gap:10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="frame" id="frame">
+
+  <div class="hero" id="hero">
+    <div>
+      <span class="hero-eyebrow mono">Diseño — PUCV</span>
+      <h1 class="hero-name">Andrés Becerra</h1>
+      <p class="hero-role">Estudiante de Diseño, mención Objetos + desarrollo gráfico</p>
+    </div>
+
+    <button class="bracket" id="bracket" aria-expanded="false" aria-controls="content" aria-label="Mostrar presentación, talleres y contacto">
+      <span class="bracket-v"></span>
+      <span class="bracket-h"></span>
+    </button>
+  </div>
+
+  <div class="content" id="content">
+    <div class="content-main">
+
+      <section class="block" id="presentacion">
+        <h2>Presentación</h2>
+        <p>Soy estudiante de Diseño en la Pontificia Universidad Católica de Valparaíso, actualmente cursando mi octavo semestre en el Taller de Ediciones Digitales.</p>
+        <p>Mi formación se orienta hacia el diseño de objetos y el diseño industrial, con interés en la experimentación material, los procesos de fabricación y las herramientas digitales.</p>
+        <p>Busco desarrollar un lenguaje propio en el diseño, donde pueda expresar mi forma de observar, interpretar y construir.</p>
+      </section>
+
+      <section class="block" id="talleres">
+        <h2>Talleres cursados</h2>
+        <div class="workshops">
+          <div class="workshop">
+            <a href="https://wiki.ead.pucv.cl/Taller_Luz_y_Color_2023" target="_blank" rel="noopener">Taller Luz y Color</a>
+            <span class="year mono">2023</span>
+          </div>
+          <div class="workshop">
+            <a href="https://wiki.ead.pucv.cl/Taller_de_Algoritmos_Cin%C3%A9ticos_2025" target="_blank" rel="noopener">Taller de Algoritmos Cinéticos</a>
+            <span class="year mono">2025</span>
+          </div>
+          <div class="workshop">
+            <a href="https://wiki.ead.pucv.cl/Taller_de_Espacios_Expositivos_2025" target="_blank" rel="noopener">Taller de Espacios Expositivos</a>
+            <span class="year mono">2025</span>
+          </div>
+          <div class="workshop">
+            <a href="https://wiki.ead.pucv.cl/Taller_de_personas_y_territorios_2026" target="_blank" rel="noopener">Taller de Personas y Territorios</a>
+            <span class="year mono">2026</span>
+          </div>
+          <div class="workshop">
+            <a href="https://wiki.ead.pucv.cl/Taller_del_Habitar_2024" target="_blank" rel="noopener">Taller del Habitar</a>
+            <span class="year mono">2024</span>
+          </div>
+          <div class="workshop">
+            <a href="https://wiki.ead.pucv.cl/Taller_del_Habit%C3%A1culo_2024" target="_blank" rel="noopener">Taller del Habitáculo</a>
+            <span class="year mono">2024</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <section class="contact-strip" id="contacto">
+      <div class="content-main contact-row-flex">
+        <a href="mailto:andres.becerra.s@mail.pucv.cl">andres.becerra.s@mail.pucv.cl</a>
+        <a href="https://wiki.ead.pucv.cl/Andres_Becerra" target="_blank" rel="noopener">wiki.ead.pucv.cl/Andres_Becerra</a>
+      </div>
+    </section>
+  </div>
+
+</div>
+
+<script>
+  const frame = document.getElementById('frame');
+  const bracket = document.getElementById('bracket');
+  const content = document.getElementById('content');
+
+  bracket.addEventListener('click', () => {
+    const isOpen = frame.classList.toggle('is-open');
+    bracket.setAttribute('aria-expanded', String(isOpen));
+    if(isOpen){ content.scrollTop = 0; }
+  });
+</script>
+
+</body>
+</html>
