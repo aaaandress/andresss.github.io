@@ -1,0 +1,302 @@
+:root{
+  --blueprint:#610000;
+  --paper:#ffffff;
+  --ink-text:#101f33;
+  --muted-dark:#3a5770;
+  --hair-light:rgba(16,31,51,0.14);
+  --light-text:#eef1f4;
+  --muted-light:#9bc0dc;
+  --hair-dark:rgba(238,241,244,0.22);
+  --accent:#e8590c;
+}
+
+*{ box-sizing:border-box; }
+
+html,body{
+  margin:0;
+  min-height:100%;
+  background:var(--paper);
+  color:var(--ink-text);
+  font-family:'Lucida Console', Monaco, monospace;
+  overflow-x:hidden;
+}
+
+a{ color:inherit; }
+
+/* ---------- NAV ---------- */
+
+.brand-mark{
+  position:fixed;
+  bottom:20px;
+  left:50px;
+  z-index:10;
+  color:#b03030;
+  text-decoration:none;
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+/* ---------- INICIO: nombre + panel inferior ---------- */
+
+.inicio-body{ margin:0; }
+
+.page-frame{
+  position:relative;
+  width:100vw;
+  height:100vh;
+  padding:20px 20px 15px 50px;
+  box-sizing:border-box;
+}
+
+/* ---------- Menú de 3 líneas ---------- */
+
+.hamburger{
+  position:absolute;
+  top:2px;
+  left:26px;
+  width:82px;
+  height:136px;
+  padding:18px 24px;
+  display:flex;
+  justify-content:space-between;
+  background:transparent;
+  border:0;
+  cursor:pointer;
+  z-index:30;
+  transform:translateY(0);
+  transition:transform .6s cubic-bezier(.65,0,.35,1);
+}
+
+.page-frame.menu-open .hamburger{
+  transform:translateY(calc(60vh - 25px));
+}
+
+.hamburger span{
+  width:2px;
+  height:100px;
+  background:#000000;
+  display:block;
+  border-radius:0;
+  transition:height .6s cubic-bezier(.65,0,.35,1), width .6s cubic-bezier(.65,0,.35,1), border-radius .6s cubic-bezier(.65,0,.35,1);
+}
+
+.page-frame.menu-open .hamburger span{
+  height:15px;
+  width:2px;
+  border-radius:0;
+}
+
+.drop-menu{
+  position:absolute;
+  top:0;
+  left:0;
+  width:50%;
+  height:0;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-start;
+  gap:45px;
+  padding:24px 0 0 130px;
+  box-sizing:border-box;
+  z-index:25;
+  transition:height .6s cubic-bezier(.65,0,.35,1);
+}
+
+.page-frame.menu-open .drop-menu{ height:calc(60vh - 20px); }
+
+.drop-link{
+  font-family:'Space Grotesk', sans-serif;
+  font-weight:700;
+  font-size:clamp(1.6rem, 3vw, 2.6rem);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#000000;
+  text-decoration:none;
+  white-space:nowrap;
+  transform:rotate(90deg);
+  transform-origin:left top;
+}
+
+.intro{
+  position:absolute;
+  top:45vh;
+  left:50px;
+  width:calc(50vw - 50px);
+  text-align:left;
+  transition:top .6s cubic-bezier(.65,0,.35,1);
+}
+
+.page-frame.menu-open .intro{
+  top:calc(100vh - 140px);
+}
+
+.hero-eyebrow{
+  display:block;
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted-dark);
+  margin-bottom:16px;
+}
+
+.hero-name{
+  font-family:'Space Grotesk', sans-serif;
+  font-weight:700;
+  font-size:5vw;
+  line-height:.95;
+  letter-spacing:-.01em;
+  text-transform:uppercase;
+  color:#b03030;
+  width:fit-content;
+  margin:0 0 15px;
+}
+
+.hero-role{
+  font-family:'Space Grotesk', sans-serif;
+  font-size:clamp(1.5rem, 3.2vw, 2.2rem);
+  font-weight:600;
+  text-transform:uppercase;
+  color:#000000;
+  margin:0;
+}
+
+.spin-wrap{
+  position:absolute;
+  top:50%;
+  left:75%;
+  transform:translate(-50%, -50%);
+  width:min(86vh, 46vw);
+  aspect-ratio:1 / 1;
+}
+
+.spin-img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+  animation:spin-axis 56s linear infinite;
+}
+
+@keyframes spin-axis{
+  from{ transform:rotate(0deg); }
+  to{ transform:rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .spin-img{ animation:none; }
+}
+
+/* ---------- Panel lateral: reemplaza la imagen (Sobre mí / Talleres) ---------- */
+
+.side-panel{
+  position:absolute;
+  top:50%;
+  left:75%;
+  transform:translate(-50%, -50%);
+  width:min(80vh, 42vw);
+  max-height:80vh;
+  overflow-y:auto;
+  text-align:left;
+}
+
+.side-panel h2{
+  font-family:'Lucida Console', Monaco, monospace;
+  font-weight:700;
+  font-size:clamp(1.4rem, 2.6vw, 1.9rem);
+  margin:0 0 28px;
+  letter-spacing:-.01em;
+  text-align:left;
+  color:#b03030;
+}
+
+.side-panel p{ line-height:1.7; font-size:16px; margin:0 0 14px; max-width:62ch; color:#b03030; }
+
+.side-panel .workshops{ border-top:0; }
+.side-panel .workshop{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:4px 16px;
+  padding:16px 0;
+  align-items:center;
+}
+.side-panel .workshop a{
+  font-family:'Lucida Console', Monaco, monospace;
+  font-size:16px;
+  font-weight:700;
+  text-decoration:none;
+  border-bottom:1px solid transparent;
+  color:#b03030;
+}
+.side-panel .workshop a:hover{ border-bottom-color:var(--accent); color:var(--accent); }
+.side-panel .workshop .year{
+  font-family:'Lucida Console', Monaco, monospace;
+  font-size:20px;
+  font-weight:600;
+  color:#b03030;
+}
+
+.text-center{ text-align:center; }
+
+/* ---------- Panel de contacto: mitad burdeo con texto deslizante ---------- */
+
+.contact-panel{
+  position:absolute;
+  top:0;
+  right:0;
+  width:50%;
+  height:100%;
+  background:#610000;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:60px;
+}
+
+.marquee-row{ overflow:hidden; width:100%; }
+
+.marquee-track{
+  display:inline-block;
+  white-space:nowrap;
+  text-decoration:none;
+  animation:marquee-left 150s linear infinite;
+}
+
+.marquee-track:hover{ animation-play-state:paused; }
+
+.marquee-word{
+  display:inline-block;
+  font-family:'Space Grotesk', sans-serif;
+  font-weight:700;
+  font-size:33.333vh;
+  line-height:1;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  color:#ffffff;
+  transition:transform .3s ease, opacity .3s ease;
+}
+
+.marquee-track:hover .marquee-word{
+  transform:scale(1.02);
+  opacity:.85;
+}
+
+@keyframes marquee-left{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-100%); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .marquee-track{ animation:none; }
+}
+
+/* ---------- Menú de contacto responsive ---------- */
+
+@media (max-width:720px){
+  .brand-mark{ bottom:16px; left:22px; font-size:12px; }
+  .page-frame{ padding:20px 20px 15px 50px; }
+  .side-panel{ width:80vw; left:50%; }
+  .marquee-track{ font-size:2rem; }
+}
