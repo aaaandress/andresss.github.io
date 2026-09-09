@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encargo 3 — Análisis de sitio web</title>
+<style>
+  body{
+    font-family: Georgia, serif;
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 0 24px;
+    line-height: 1.7;
+    color: #1a1a1a;
+  }
+  h1{ font-size: 1.6rem; margin-bottom: 8px; }
+  .subtitulo{ color: #555; margin-top: 0; margin-bottom: 40px; font-size: 0.95rem; }
+  h2{ font-size: 1.2rem; margin-top: 48px; margin-bottom: 12px; }
+  p{ margin: 0 0 16px; }
+  a{ color: #b03030; }
+</style>
+</head>
+<body>
+
+  <h1>Encargo 3 — Análisis de un sitio y una plataforma web</h1>
+  <p class="subtitulo">Sitio analizado: <a href="https://www.esval.cl/personas/inicio" target="_blank" rel="noopener">esval.cl</a> (Esval, empresa sanitaria de la Región de Valparaíso) — Herramienta usada: Chrome DevTools</p>
+
+  <h2>¿Qué partes de la pantalla se mueven y cuáles quedan fijas al hacer scroll?</h2>
+  <p>Al hacer scroll por la página, casi todo se desplaza con normalidad: el menú superior, el carrusel de imágenes, las tarjetas informativas, todo baja junto con el resto del contenido. Lo único que se mantiene fijo en pantalla, sin importar cuánto se avance, es el asistente virtual "Clara" (el círculo azul en la esquina inferior derecha) junto con el widget de verificación que aparece justo debajo de él. Tiene sentido: son elementos de ayuda o soporte inmediato, y este tipo de widgets casi siempre usa <code>position: fixed</code> precisamente para que el usuario los tenga siempre a mano, sin tener que ir a buscarlos.</p>
+
+  <h2>¿Cómo se distribuyen las columnas, usando las herramientas de desarrollador del navegador?</h2>
+  <p>Revisando distintos bloques con el inspector aparecen dos formas bien distintas de organizar el contenido dentro de la misma página. La fila de accesos rápidos (Pago rápido, Busca tu número de cliente, Botón Te Ayudo, etc.) está armada con Flexbox — se nota por clases como <code>d-flex</code> y <code>d-sm-flex</code>, típicas de Bootstrap. En cambio, el carrusel de tarjetas informativas más abajo (Límites de Responsabilidad, Ciclo del Agua, Pago rápido) usa una técnica bastante más antigua: sus elementos están flotados con <code>float: left</code>, y el movimiento se logra cambiando a mano la propiedad <code>left</code> mediante JavaScript (se alcanzó a ver un valor como <code>left: -448.875px</code> actualizándose en tiempo real mientras el carrusel se desplazaba). No se encontró ningún uso de CSS Grid en las partes revisadas.</p>
+
+  <h2>¿Cómo reacciona ese layout cuando la pantalla se reduce al tamaño móvil?</h2>
+  <p>Al achicar la pantalla a tamaño celular, el menú principal desaparece por completo y se reemplaza por el clásico botón de tres líneas, que es el comportamiento esperable y funciona bien. Sin embargo, la fila de accesos rápidos no se adapta de la misma forma: sigue siendo una sola fila horizontal, y como ya no cabe en el ancho disponible, simplemente se corta — se alcanza a ver la palabra "BUSCA" partida a la mitad, sin ninguna pista visual (una flecha, un degradado, algo) que le avise al usuario que hay más iconos si desliza hacia el lado. El banner de cookies, en cambio, sí se comporta bien: los botones que en escritorio están uno al lado del otro, en mobile se apilan en columna ocupando todo el ancho, lo que los hace mucho más fáciles de tocar con el dedo.</p>
+
+  <h2>¿Les parecen apropiadas las decisiones tomadas? ¿Harían algún ajuste?</h2>
+  <p>En general la página cumple lo básico, pero se nota que fue construida en distintas etapas y con distintos criterios: mezclar Flexbox moderno con un carrusel armado a la antigua (float más JavaScript manual) es señal de un sitio que se ha ido parchando con el tiempo, más que pensado como un sistema coherente desde el principio. Eso no es necesariamente un problema grave para quien lo usa, pero sí complica el mantenimiento a futuro para quien tenga que seguir trabajando en ese código.</p>
+  <p>Lo que sí cambiaría es el comportamiento de la fila de accesos rápidos en mobile: dejar que el texto se corte sin ningún indicio de que se puede seguir deslizando es un descuido de usabilidad bastante fácil de solucionar, por ejemplo con un pequeño degradado en el borde derecho o dejando que se asome un poco el siguiente ícono. Por otro lado, me parece acertado que hayan mantenido fijos al asistente virtual y el widget de verificación: son elementos de ayuda inmediata, y es razonable que el usuario los tenga siempre a la vista sin depender de en qué parte de la página se encuentre.</p>
+
+</body>
+</html>
