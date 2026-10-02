@@ -1,302 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap');
+
 :root{
-  --blueprint:#610000;
-  --paper:#ffffff;
-  --ink-text:#101f33;
-  --muted-dark:#3a5770;
-  --hair-light:rgba(16,31,51,0.14);
-  --light-text:#eef1f4;
-  --muted-light:#9bc0dc;
-  --hair-dark:rgba(238,241,244,0.22);
-  --accent:#e8590c;
+  --ink:#111111;
+  --placeholder:#d9d9d9;
+  --border:#111111;
 }
 
 *{ box-sizing:border-box; }
 
 html,body{
   margin:0;
-  min-height:100%;
-  background:var(--paper);
-  color:var(--ink-text);
-  font-family:'Lucida Console', Monaco, monospace;
-  overflow-x:hidden;
+  background:#ffffff;
+  color:var(--ink);
+  font-family:'Oswald', sans-serif;
+  font-weight:400;
 }
 
 a{ color:inherit; }
 
-/* ---------- NAV ---------- */
-
-.brand-mark{
-  position:fixed;
-  bottom:20px;
-  left:50px;
-  z-index:10;
-  color:#b03030;
-  text-decoration:none;
-  font-weight:700;
-  font-size:13px;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-}
-
-/* ---------- INICIO: nombre + panel inferior ---------- */
-
-.inicio-body{ margin:0; }
-
-.page-frame{
+.page-canvas{
+  max-width:1440px;
+  margin:0 auto;
   position:relative;
-  width:100vw;
-  height:100vh;
-  padding:20px 20px 15px 50px;
-  box-sizing:border-box;
 }
 
-/* ---------- Menú de 3 líneas ---------- */
+/* ---------- Encabezado de marca (páginas Repositorio / Talleres / Sobre mí) ---------- */
 
-.hamburger{
-  position:absolute;
-  top:2px;
-  left:26px;
-  width:82px;
-  height:136px;
-  padding:18px 24px;
-  display:flex;
-  justify-content:space-between;
-  background:transparent;
-  border:0;
-  cursor:pointer;
-  z-index:30;
-  transform:translateY(0);
-  transition:transform .6s cubic-bezier(.65,0,.35,1);
+.brand-row{
+  padding:30px 40px 0;
 }
 
-.page-frame.menu-open .hamburger{
-  transform:translateY(calc(60vh - 25px));
-}
-
-.hamburger span{
-  width:2px;
-  height:100px;
-  background:#000000;
-  display:block;
-  border-radius:0;
-  transition:height .6s cubic-bezier(.65,0,.35,1), width .6s cubic-bezier(.65,0,.35,1), border-radius .6s cubic-bezier(.65,0,.35,1);
-}
-
-.page-frame.menu-open .hamburger span{
-  height:15px;
-  width:2px;
-  border-radius:0;
-}
-
-.drop-menu{
-  position:absolute;
-  top:0;
-  left:0;
-  width:50%;
-  height:0;
-  overflow:hidden;
-  display:flex;
-  align-items:flex-start;
-  gap:45px;
-  padding:24px 0 0 130px;
-  box-sizing:border-box;
-  z-index:25;
-  transition:height .6s cubic-bezier(.65,0,.35,1);
-}
-
-.page-frame.menu-open .drop-menu{ height:calc(60vh - 20px); }
-
-.drop-link{
-  font-family:'Space Grotesk', sans-serif;
-  font-weight:700;
-  font-size:clamp(1.6rem, 3vw, 2.6rem);
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  color:#000000;
-  text-decoration:none;
-  white-space:nowrap;
-  transform:rotate(90deg);
-  transform-origin:left top;
-}
-
-.intro{
-  position:absolute;
-  top:45vh;
-  left:50px;
-  width:calc(50vw - 50px);
-  text-align:left;
-  transition:top .6s cubic-bezier(.65,0,.35,1);
-}
-
-.page-frame.menu-open .intro{
-  top:calc(100vh - 140px);
-}
-
-.hero-eyebrow{
-  display:block;
-  font-size:11px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:var(--muted-dark);
-  margin-bottom:16px;
-}
-
-.hero-name{
-  font-family:'Space Grotesk', sans-serif;
-  font-weight:700;
-  font-size:5vw;
-  line-height:.95;
-  letter-spacing:-.01em;
-  text-transform:uppercase;
-  color:#b03030;
-  width:fit-content;
-  margin:0 0 15px;
-}
-
-.hero-role{
-  font-family:'Space Grotesk', sans-serif;
-  font-size:clamp(1.5rem, 3.2vw, 2.2rem);
+.brand-title-link{
+  font-size:24px;
   font-weight:600;
   text-transform:uppercase;
-  color:#000000;
-  margin:0;
+  text-decoration:none;
+  letter-spacing:.02em;
 }
 
-.spin-wrap{
-  position:absolute;
-  top:50%;
-  left:75%;
-  transform:translate(-50%, -50%);
-  width:min(86vh, 46vw);
-  aspect-ratio:1 / 1;
-}
+/* ---------- Placeholder genérico (imágenes / encargos) ---------- */
 
-.spin-img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  display:block;
-  animation:spin-axis 56s linear infinite;
-}
-
-@keyframes spin-axis{
-  from{ transform:rotate(0deg); }
-  to{ transform:rotate(360deg); }
-}
-
-@media (prefers-reduced-motion: reduce){
-  .spin-img{ animation:none; }
-}
-
-/* ---------- Panel lateral: reemplaza la imagen (Sobre mí / Talleres) ---------- */
-
-.side-panel{
-  position:absolute;
-  top:50%;
-  left:75%;
-  transform:translate(-50%, -50%);
-  width:min(80vh, 42vw);
-  max-height:80vh;
-  overflow-y:auto;
-  text-align:left;
-}
-
-.side-panel h2{
-  font-family:'Lucida Console', Monaco, monospace;
-  font-weight:700;
-  font-size:clamp(1.4rem, 2.6vw, 1.9rem);
-  margin:0 0 28px;
-  letter-spacing:-.01em;
-  text-align:left;
-  color:#b03030;
-}
-
-.side-panel p{ line-height:1.7; font-size:16px; margin:0 0 14px; max-width:62ch; color:#b03030; }
-
-.side-panel .workshops{ border-top:0; }
-.side-panel .workshop{
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:4px 16px;
-  padding:16px 0;
+.placeholder{
+  background:var(--placeholder);
+  border:1px solid var(--border);
+  display:flex;
   align-items:center;
-}
-.side-panel .workshop a{
-  font-family:'Lucida Console', Monaco, monospace;
-  font-size:16px;
-  font-weight:700;
-  text-decoration:none;
-  border-bottom:1px solid transparent;
-  color:#b03030;
-}
-.side-panel .workshop a:hover{ border-bottom-color:var(--accent); color:var(--accent); }
-.side-panel .workshop .year{
-  font-family:'Lucida Console', Monaco, monospace;
-  font-size:20px;
-  font-weight:600;
-  color:#b03030;
-}
-
-.text-center{ text-align:center; }
-
-/* ---------- Panel de contacto: mitad burdeo con texto deslizante ---------- */
-
-.contact-panel{
-  position:absolute;
-  top:0;
-  right:0;
-  width:50%;
-  height:100%;
-  background:#610000;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
   justify-content:center;
-  gap:60px;
-}
-
-.marquee-row{ overflow:hidden; width:100%; }
-
-.marquee-track{
-  display:inline-block;
-  white-space:nowrap;
-  text-decoration:none;
-  animation:marquee-left 150s linear infinite;
-}
-
-.marquee-track:hover{ animation-play-state:paused; }
-
-.marquee-word{
-  display:inline-block;
-  font-family:'Space Grotesk', sans-serif;
-  font-weight:700;
-  font-size:33.333vh;
-  line-height:1;
+  text-align:center;
+  font-size:16px;
   letter-spacing:.02em;
   text-transform:uppercase;
-  color:#ffffff;
-  transition:transform .3s ease, opacity .3s ease;
+  color:#333;
 }
 
-.marquee-track:hover .marquee-word{
-  transform:scale(1.02);
-  opacity:.85;
+/* ---------- INICIO (1440 x 900) ---------- */
+
+.inicio-header{
+  padding:36px 40px 0;
+}
+.inicio-header .brand-title{
+  font-size:96px;
+  font-weight:700;
+  display:block;
+  line-height:1;
+  margin-bottom:4px;
+}
+.inicio-header .brand-subtitle{
+  font-size:34px;
+  font-weight:400;
+  margin:0 0 24px;
 }
 
-@keyframes marquee-left{
-  from{ transform:translateX(0); }
-  to{ transform:translateX(-100%); }
+.hero-row{
+  position:relative;
+  display:flex;
+  align-items:stretch;
+  height:58vh;
+  min-height:460px;
+  margin:0 40px;
 }
 
-@media (prefers-reduced-motion: reduce){
-  .marquee-track{ animation:none; }
+.hero-image-box{
+  width:34%;
+  flex:none;
+  position:relative;
+  z-index:1;
 }
 
-/* ---------- Menú de contacto responsive ---------- */
+.hero-carousel-box{
+  flex:1;
+  margin-left:-70px;
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--placeholder);
+  border:1px solid var(--border);
+}
+
+.carousel-stage{
+  position:relative;
+  text-align:center;
+}
+
+.carousel-word{
+  display:none;
+  font-size:48px;
+  font-weight:600;
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+}
+.carousel-word.active{ display:inline-block; }
+.carousel-word:hover{ text-decoration:underline; }
+
+.carousel-arrow{
+  position:absolute;
+  bottom:24px;
+  right:24px;
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  border:1px solid var(--border);
+  background:#fff;
+  font-size:22px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.carousel-arrow:hover{ background:#eee; }
+
+/* ---------- REPOSITORIO (1440 x 900) ---------- */
+
+.page-title{
+  text-align:center;
+  font-size:72px;
+  font-weight:700;
+  text-transform:uppercase;
+  line-height:1;
+  margin:24px 0 50px;
+}
+
+.repo-grid{
+  display:grid;
+  grid-template-columns:1fr 2fr 1fr;
+  grid-template-rows:1fr 1fr;
+  gap:24px;
+  max-width:1100px;
+  height:58vh;
+  min-height:420px;
+  margin:0 auto 60px;
+  padding:0 40px;
+}
+
+.repo-box{ text-decoration:none; font-weight:500; font-size:18px; }
+.repo-1{ grid-column:1; grid-row:1; }
+.repo-2{ grid-column:1; grid-row:2; }
+.repo-3{ grid-column:2; grid-row:1 / 3; }
+.repo-4{ grid-column:3; grid-row:1 / 3; }
+
+.repo-1.placeholder{ cursor:pointer; }
+.repo-1.placeholder:hover{ background:#c8c8c8; }
+
+.course-caption{
+  text-align:center;
+  font-size:18px;
+  font-weight:400;
+  margin-bottom:60px;
+}
+
+/* ---------- TALLERES Y PROYECTOS (1440 x 2200, bien alta) ---------- */
+
+.talleres-canvas{ padding-bottom:10vh; }
+
+.hero-image-box.tall{
+  max-width:1050px;
+  height:38vh;
+  min-height:360px;
+  margin:8vh auto 10vh;
+}
+
+.gallery-row{
+  display:flex;
+  gap:34px;
+  max-width:1150px;
+  margin:0 auto 10vh;
+  padding:0 40px;
+}
+
+.gallery-item{ flex:1; }
+.gallery-item .placeholder{ height:300px; margin-bottom:18px; }
+.gallery-caption{
+  text-align:center;
+  font-size:18px;
+  font-weight:500;
+}
+
+/* ---------- SOBRE MÍ (1440 x 2000, bien alta) ---------- */
+
+.sobremi-canvas{ padding-bottom:10vh; }
+
+.portrait-box{
+  width:420px;
+  height:50vh;
+  min-height:420px;
+  margin:7vh auto 9vh;
+}
+
+.bio-text{
+  max-width:520px;
+  margin:0 auto 10vh;
+  text-align:center;
+}
+.bio-text p{ margin:0 0 30px; line-height:1.65; font-size:19px; }
+
+/* ---------- Pie de contacto (Talleres y Sobre mí) ---------- */
+
+.contact-footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:26px 40px;
+  border-top:1px solid #ddd;
+  font-size:20px;
+}
+.contact-footer a{ text-decoration:none; }
+.contact-footer a:hover{ text-decoration:underline; }
 
 @media (max-width:720px){
-  .brand-mark{ bottom:16px; left:22px; font-size:12px; }
-  .page-frame{ padding:20px 20px 15px 50px; }
-  .side-panel{ width:80vw; left:50%; }
-  .marquee-track{ font-size:2rem; }
+  .inicio-header .brand-title{ font-size:48px; }
+  .inicio-header .brand-subtitle{ font-size:22px; }
+  .hero-row{ flex-direction:column; height:auto; margin:0 20px; }
+  .hero-image-box{ width:100%; height:200px; }
+  .hero-carousel-box{ margin-left:0; margin-top:-1px; height:220px; }
+  .carousel-word{ font-size:28px; }
+  .page-title{ font-size:36px; }
+  .repo-grid{ grid-template-columns:1fr; grid-template-rows:repeat(4,1fr); height:auto; padding:0 20px; }
+  .repo-1{ grid-column:1; grid-row:1; } .repo-2{ grid-row:2; } .repo-3{ grid-row:3; } .repo-4{ grid-row:4; }
+  .repo-box{ height:140px; }
+  .gallery-row{ flex-direction:column; padding:0 20px; }
+  .hero-image-box.tall{ height:220px; margin:5vh auto; }
+  .portrait-box{ width:80%; height:300px; margin:5vh auto; }
+  .bio-text p{ font-size:17px; }
+  .contact-footer{ flex-direction:column; gap:10px; align-items:flex-start; padding:20px; font-size:16px; }
 }
