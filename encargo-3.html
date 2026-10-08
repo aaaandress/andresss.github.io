@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encargo 3 — Andrés Becerra</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  body.e3-body{ overflow-x:auto; overflow-y:hidden; background:#fbfafa; }
+  .e3-canvas{
+    width:6145px;
+    height:900px;
+    position:relative;
+  }
+  .e3-header{ position:absolute; left:50px; top:14px; }
+  .e3-header .brand-link{ font-size:20px; display:block; margin-bottom:26px; }
+  .e3-header .e3-title{ font-size:50px; font-weight:700; text-transform:uppercase; display:block; line-height:1; }
+  .e3-header .e3-subtitle{ font-size:19px; font-weight:400; display:block; margin-top:6px; }
+
+  .e3-site h2, .e3-esval h2{ font-size:16px; font-weight:600; margin:0 0 9px; }
+  .e3-site p, .e3-esval p{ font-size:12.5px; line-height:1.5; margin:0 0 9px; font-weight:400; }
+  .e3-site ul, .e3-esval ul{ font-size:12.5px; line-height:1.5; margin:0; padding-left:16px; }
+  .e3-site .site-name, .e3-esval .site-name{ font-size:32px; font-weight:700; text-transform:uppercase; margin:0 0 12px; }
+
+  .real-img{
+    display:block;
+    width:100%;
+    height:auto;
+    border:1px solid var(--border);
+  }
+
+  /* ---- ESVAL: todo con posicionamiento absoluto, según descripción exacta ---- */
+  .e3-esval{ position:absolute; top:0; left:0; width:100%; height:900px; }
+  .e3-esval .pos{ position:absolute; }
+
+  .esval-name{ left:80px; top:470px; width:280px; }
+  .esval-img6{ left:400px; top:420px; width:540px; }
+  .esval-func{ left:400px; top:140px; width:396px; }
+  .esval-arq{ left:990px; top:140px; width:396px; }
+  .esval-elementos{ left:990px; top:330px; width:396px; }
+  .esval-img9{ left:1426px; top:140px; width:605px; }
+  .esval-img7{ left:1426px; top:267px; width:240px; }
+  .esval-img8{ left:1686px; top:267px; width:240px; }
+  .esval-enlaces{ left:1966px; top:267px; width:280px; }
+
+  /* ---- YAPO: col1 texto(arriba+abajo) | col2 img10/menuhoriz | col3 img11/pago | col4 elementos(alta) | col5 img12(alta) ---- */
+  .e3-site{
+    position:absolute;
+    top:110px;
+    display:grid;
+    grid-template-rows: 260px 1fr;
+    row-gap:26px;
+    column-gap:70px;
+    height:760px;
+  }
+  .e3-yapo{
+    left:3020px;
+    grid-template-columns: 320px 552px 480px 320px 593px;
+  }
+  .yapo-name{ grid-column:1; grid-row:1; }
+  .yapo-menu{ grid-column:1; grid-row:2; }
+  .yapo-img10{ grid-column:2; grid-row:1; }
+  .yapo-menuh{ grid-column:2; grid-row:2; }
+  .yapo-img11{ grid-column:3; grid-row:1; }
+  .yapo-pago{ grid-column:3; grid-row:2; }
+  .yapo-elementos{ grid-column:4; grid-row:1 / 3; }
+  .yapo-img12{ grid-column:5; grid-row:1; align-self:start; }
+
+  .e3-divider{ position:absolute; left:2930px; top:110px; width:1px; height:760px; background:#ddd; }
+</style>
+</head>
+<body class="e3-body">
+
+  <div class="e3-canvas">
+
+    <div class="e3-header">
+      <a href="repositorio.html" class="brand-link">Repositorio</a>
+      <span class="e3-title">Encargo 3</span>
+      <span class="e3-subtitle">Análisis de sitio y plataforma web</span>
+    </div>
+
+    <!-- ESVAL -->
+    <div class="e3-esval">
+
+      <div class="pos esval-name">
+        <p class="site-name">Esval</p>
+        <p>El portal de Esval se presenta como un sitio web corporativo enfocado principalmente en la autogestión del cliente y el servicio público de agua potable en la Región de Valparaíso. La interfaz adopta un tono institucional basado en tonos azules y blancos, minimizando las distracciones para que el usuario realice trámites urgentes en pocos pasos.</p>
+      </div>
+
+      <img class="real-img pos esval-img6" src="images/imagen6.png" alt="Imagen 6">
+
+      <div class="pos esval-func">
+        <h2>Funcionalidad y propósito</h2>
+        <p>El propósito central de la plataforma es resolver las necesidades del cliente sanitario sin requerir asistencia presencial para tareas básicas. Entre las funcionalidades destacan el pago exprés mediante número de cliente o RUT, la consulta de cortes de agua programados o de emergencia por comuna, el ingreso de lecturas del medidor y la revisión del estado de boletas.</p>
+      </div>
+
+      <div class="pos esval-arq">
+        <h2>Arquitectura de información</h2>
+        <p>Se sitúa en el nivel más alto las operaciones frecuentes del usuario común y relega la información corporativa a niveles secundarios. En la barra superior principal se distinguen pestañas estructuradas como "Pago rápido", "Boleta electrónica" y "Busca número de cliente".</p>
+      </div>
+
+      <div class="pos esval-elementos">
+        <h2>Elementos y Componentes Dinámicos</h2>
+        <p>El sitio combina elementos estáticos (formularios de consulta, tarjetas de información legal) y piezas dinámicas como el carrusel de noticias, mapas interactivos de zonas de corte, y un widget de asistencia en línea.</p>
+      </div>
+
+      <img class="real-img pos esval-img9" src="images/imagen9.png" alt="Imagen 9">
+      <img class="real-img pos esval-img7" src="images/imagen7.png" alt="Imagen 7">
+      <img class="real-img pos esval-img8" src="images/imagen8.png" alt="Imagen 8">
+
+      <div class="pos esval-enlaces">
+        <h2>Enlaces externos</h2>
+        <p>Ciertos flujos redirigen fuera de los entornos seguros dedicados. Al presionar en el pago de cuentas, la plataforma redirige a pasarelas bancarias externas (como Transbank o Servipag).</p>
+      </div>
+
+    </div>
+
+    <div class="e3-divider"></div>
+
+    <!-- YAPO.CL -->
+    <div class="e3-site e3-yapo">
+
+      <div class="yapo-name">
+        <p class="site-name">Yapo.cl</p>
+        <p>Yapo.cl es el portal de avisos clasificados y comercio electrónico entre particulares (C2C) y empresas (B2C) más grande de Chile. Su propósito central es conectar a compradores y vendedores de todo el país a través de una interfaz ágil e intuitiva, facilitando la transacción de bienes inmuebles, vehículos, productos de consumo general, servicios y ofertas laborales.</p>
+      </div>
+
+      <div class="yapo-menu">
+        <h2>Menú principal</h2>
+        <p>En la zona superior de la pantalla se ubica la barra de navegación fija, la cual actúa como el centro de mandos del sitio. Cuenta con Logotipo, barra de búsqueda, selector de ubicación y categoría, botón de "publicar anuncio" y acceso a "ingresar".</p>
+      </div>
+
+      <img class="real-img yapo-img10" src="images/imagen10.png" alt="Imagen 10">
+
+      <div class="yapo-menuh">
+        <h2>Menú horizontal</h2>
+        <p>Ubicado justo debajo de la cabecera, cuenta con una fila de íconos representativos que funcionan como accesos directos a las áreas de mayor tráfico del sitio:</p>
+        <ul>
+          <li>Inmuebles</li>
+          <li>Vehículos</li>
+          <li>Empleos y servicios</li>
+          <li>Marketplace</li>
+        </ul>
+      </div>
+
+      <img class="real-img yapo-img11" src="images/imagen11.png" alt="Imagen 11">
+
+      <div class="yapo-pago">
+        <h2>Pago y Redirecciones Externas</h2>
+        <p>Esta plataforma se conecta con servicios de terceros para completar transacciones comerciales o publicitarias.</p>
+        <ul>
+          <li>Sector de pagos y avisos</li>
+          <li>Bloques de publicidad</li>
+          <li>Enlaces de descarga</li>
+        </ul>
+      </div>
+
+      <div class="yapo-elementos">
+        <h2>Elementos dinámicos</h2>
+        <p>La página utiliza componentes interactivos y en movimiento para provocar anuncios e incentivar la interacción.</p>
+        <p><strong>Carrusel de Anuncios</strong>, una barra horizontal deslizable situada en la zona superior o media. Muestra una secuencia de publicaciones destacadas por vendedores pagados (como autos o propiedades).</p>
+        <p><strong>Tarjetas de Anuncios en la Grilla</strong>, cada recuadro de la lista principal tiene interacción al pasar el cursor por encima.</p>
+        <ul>
+          <li>Efecto de elevación</li>
+          <li>Botón de Favoritos</li>
+          <li>Clic en la Tarjeta: hacer clic en cualquier parte de la tarjeta te redirige a la página individual del anuncio (yapo.cl/avisos/...)</li>
+        </ul>
+      </div>
+
+      <img class="real-img yapo-img12" src="images/imagen12.png" alt="Imagen 12">
+
+    </div>
+
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
