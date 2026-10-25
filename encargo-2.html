@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encargo 2 — Dirección de Servicios Estudiantiles</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos específicos adaptados para el Encargo 2 */
+        body {
+            background-color: #f4f4f4; /* Tonalidad gris establecida en tus páginas */
+            font-family: sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 40px;
+        }
+        .encargo2-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .seccion-izquierda {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .seccion-derecha {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .card-blanca {
+            background: #ffffff;
+            padding: 24px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        /* Recuadro principal cambiado de azul a negro según tus instrucciones */
+        .card-negra {
+            background-color: #111111; 
+            color: #ffffff;
+            padding: 40px;
+            border-radius: 4px;
+            grid-column: span 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+        .card-negra h2 {
+            font-size: 2rem;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        .card-negra p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #dddddd;
+            margin-bottom: 24px;
+        }
+        .card-negra img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+        .tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffaa00; /* Detalle anaranjado decorativo similar al original */
+            margin-bottom: 8px;
+            display: block;
+        }
+        .btn-naranja {
+            display: inline-block;
+            background-color: #f28500;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .btn-naranja:hover {
+            background-color: #d67400;
+        }
+        .link-regresar {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #555;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .link-regresar:hover {
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="encargo2-container" style="grid-column: span 2; width: 100%;">
+        <!-- Botón para volver al repositorio -->
+        <div style="grid-column: span 2;">
+            <a href="repositorio.html" class="link-regresar">← Volver al Repositorio</a>
+        </div>
+
+        <!-- Columna Superior Izquierda: Título y descripción principal -->
+        <div class="card-blanca" style="grid-column: span 1;">
+            <h1 style="font-size: 1.8rem; margin-top: 0; color: #111;">Dirección de Servicios Estudiantiles</h1>
+            <div style="width: 30px; height: 3px; background-color: #f28500; margin-bottom: 16px;"></div>
+            <p style="font-size: 0.95rem; line-height: 1.5; color: #555;">
+                El trabajo colaborativo, sistemático y permanente en investigación y creación, realizado en la Universidad de Concepción, es una forma válida de alcanzar altos niveles de calidad y pertinencia.
+            </p>
+            <a href="#" class="btn-naranja">Conocer más ↗</a>
+        </div>
+
+        <!-- Columna Superior Derecha: Cajas de servicios en cuadrícula -->
+        <div class="seccion-derecha" style="grid-column: span 1;">
+            <div class="card-blanca">
+                <span style="font-size: 0.8rem; color: #666; font-weight: bold;">■ Deportes</span>
+                <h3 style="font-size: 1rem; margin-top: 8px; color: #111;">Actividades masivas y recreativas</h3>
+            </div>
+            <div class="card-blanca">
+                <span style="font-size: 0.8rem; color: #666; font-weight: bold;">■ Salud</span>
+                <h3 style="font-size: 1rem; margin-top: 8px; color: #111;">Recepción de certificados médicos</h3>
+            </div>
+            <div class="card-blanca">
+                <span style="font-size: 0.8rem; color: #666; font-weight: bold;">■ Bienestar Estudiantil</span>
+                <h3 style="font-size: 1rem; margin-top: 8px; color: #111;">Tarjeta Nacional Estudiantil</h3>
+            </div>
+            <div class="card-blanca">
+                <span style="font-size: 0.8rem; color: #666; font-weight: bold;">■ Actividades extraprogramáticas</span>
+                <h3 style="font-size: 1rem; margin-top: 8px; color: #111;">Cursos Artísticos y Culturales de libre participación</h3>
+            </div>
+        </div>
+
+        <!-- Sección Inferior: Bloque ancho en color negro con imagen y texto -->
+        <div class="card-negra">
+            <div>
+                <span class="tag">■ Unidad de Deportes DISE</span>
+                <h2>Talleres deportivos</h2>
+                <div style="width: 30px; height: 3px; background-color: #f28500; margin-bottom: 16px;"></div>
+                <p>
+                    Esta Unidad es la encargada de generar instancias deportivas, recreativas y de actividades masivas de integración para la formación integral y de excelencia. Su objetivo principal es entregar a los y las estudiantes las herramientas necesarias para su desarrollo integral al interior de la Universidad y ser la fuente motivadora y precursora de cambios positivos tanto en el aspecto físico como en el mental, a través de difusión o promoción de estilos de vida saludables.
+                </p>
+                <a href="#" class="btn-naranja">Visita nuestros talleres ↗</a>
+            </div>
+            <div>
+                <!-- Imagen referencial basada en el contenido de la selección de fútbol femenino UdeC -->
+                <img src="https://noticias.udec.cl/wp-content/uploads/2025/04/UdeC-vs-USS-adesup-24.jpg" alt="Talleres deportivos UdeC">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
